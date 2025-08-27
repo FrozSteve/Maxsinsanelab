@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Max's Insane Lab</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      color: white;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+
+    img.logo {
+      width: 300px;
+      animation: zoomIn 5s forwards;
+      z-index: 2;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    /* Comic book style text */
+    h1 {
+      font-size: 3em;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeIn 5s forwards, wiggle 1s infinite ease-in-out alternate;
+      z-index: 2;
+      color: yellow;
+      font-family: "Impact", "Comic Sans MS", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 
+        3px 3px 0px red,
+        -3px -3px 0px blue,
+        3px -3px 0px green,
+        -3px 3px 0px orange;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes wiggle {
+      0% { transform: rotate(-2deg); }
+      100% { transform: rotate(2deg); }
+    }
+
+    /* Side GIFs */
+    .side-gif {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 200px;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      right: 0;
+    }
+
+    /* Fade overlay */
+    .fade {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .fade.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Side GIFs -->
+  <img class="side-gif left" src="https://i.gifer.com/origin/00/00ae53a95ee7af0be395f5291d792c9a_w200.gif" alt="Side Animation">
+  <img class="side-gif right" src="https://i.gifer.com/origin/00/00ae53a95ee7af0be395f5291d792c9a_w200.gif" alt="Side Animation">
+
+  <!-- Center content -->
+  <img class="logo" src="https://art.pixilart.com/thumb/36714eec15b38e7.png" alt="Logo">
+  <h1>Max's Insane Lab</h1>
+
+  <!-- Music -->
+  <audio autoplay>
+    <source src="https://archive.org/download/RickAstleyNeverGonnaGiveYouUp_201908/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Fade overlay -->
+  <div class="fade" id="fade"></div>
+
+  <!-- Redirect after 5s -->
+  <script>
+    setTimeout(() => {
+      document.getElementById("fade").classList.add("active");
+      setTimeout(() => {
+        window.location.href = "hub.html";
+      }, 1000); // wait for fade animation
+    }, 5000);
+  </script>
+</body>
+</html>
